@@ -33,7 +33,7 @@ def send_frames():
                 break
 
         if not frame_queue.empty():
-            frame = frame_queue.get
+            frame = frame_queue.get()
             try:
                 server.send_frame(frame)
             except Exception as e:
