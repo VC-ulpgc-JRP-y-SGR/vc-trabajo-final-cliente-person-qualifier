@@ -14,7 +14,7 @@ args = parser.parse_args()
 
 # Initialize camera and server
 cap = cv2.VideoCapture(0)
-server = CameraServer(ip=args.ip, buffer_size=4096, port=args.port)
+server = CameraServer(ip=args.ip, buffer_size=4096, port=int(args.port))
 server.start()
 
 # Initialize queue and flag for thread communication
@@ -33,7 +33,7 @@ def send_frames():
                 break
 
         if not frame_queue.empty():
-            frame = frame_queue.get()
+            frame = frame_queue.get
             try:
                 server.send_frame(frame)
             except Exception as e:
